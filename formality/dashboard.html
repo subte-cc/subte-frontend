@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>subte.cc - Domains Dashboard</title>
+        <link href="/assets/css/styles.css" rel="stylesheet" />
+        <link href="/assets/css/dashboard.css" rel="stylesheet" />
+        <link href="/assets/css/ui.css" rel="stylesheet" />
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." name="description" />
+        <meta content="subte.cc, dynamic dns, ddns, free dns, open source, privacy" name="keywords" />
+        <meta content="subte.cc" name="author" />
+        <meta content="subte.cc" property="og:title" />
+        <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." property="og:description" />
+        <meta content="website" property="og:type" />
+</head>
+
+<body>
+        <header>
+                <div class="header-left">
+                        <a href="/"><img class="logo" src="./assets/img/branding.svg" /></a>
+                        <button class="mobile-menu-btn"
+                                onclick="document.querySelector('header').classList.toggle('nav-open')">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"
+                                        width="24">
+                                        <line x1="3" x2="21" y1="12" y2="12"></line>
+                                        <line x1="3" x2="21" y1="6" y2="6"></line>
+                                        <line x1="3" x2="21" y1="18" y2="18"></line>
+                                </svg>
+                        </button>
+                        <div class="nav-links" id="nav-links">
+                                <a href="/docs"><button>Docs</button></a>
+                                <a href="/news"><button>News</button></a>
+                                <a href="/about"><button>About</button></a>
+                        </div>
+                </div>
+                <div class="header-right">
+                        <div class="account-menu">
+                                <button id="account-menu-btn">Account</button>
+                                <div class="account-menu-dropdown" id="account-menu-dropdown" style="display: none;">
+                                        <button id="change-password-menu-btn" style="text-align: left; padding: 0.5rem 1rem; width: 100%; border: none; background: transparent; cursor: pointer; color: var(--text);">Change Password</button>
+                                        <button class="menu-item-danger" id="delete-account-menu-btn">Delete
+                                                Account</button>
+                                        <button id="logout-btn">Logout</button>
+                                </div>
+                        </div>
+                </div>
+        </header>
+        <div class="dashboard-header-container">
+                <div class="account-summary">
+                        <div class="summary-details">
+                                <table>
+                                        <tr>
+                                                <th>account</th>
+                                                <td id="info-account">...</td>
+                                        </tr>
+                                        <tr>
+                                                <th>token</th>
+                                                <td id="info-token">
+                                                        <button class="token-btn" id="generate-token-btn">Generate
+                                                                Token</button>
+                                                        <span id="token-display"></span>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <th>token generated</th>
+                                                <td id="info-token-gen">...</td>
+                                        </tr>
+                                        <tr>
+                                                <th>created date</th>
+                                                <td id="info-created">...</td>
+                                        </tr>
+                                </table>
+                        </div>
+                </div>
+        </div>
+        <div class="dashboard-header">
+                <div class="domains-title">
+                        domains <span class="count-badge" id="domain-count">0/5</span>
+                </div>
+                <div class="add-domain-form">
+                        <span class="prefix">http://</span>
+                        <input id="new-domain-input" placeholder="sub domain" type="text" />
+                        <span class="suffix">.subte.cc</span>
+                        <button class="add-btn" id="add-domain-btn">add domain</button>
+                </div>
+        </div>
+        <div class="dashboard-content">
+                <table class="domains-table">
+                        <thead>
+                                <tr>
+                                        <th>domain</th>
+                                        <th>current ip</th>
+                                        <th>changed</th>
+                                        <th></th>
+                                </tr>
+                        </thead>
+                        <tbody id="domains-body">
+                        </tbody>
+                </table>
+        </div>
+        <div class="modal-overlay" id="delete-modal" style="display: none;">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h2>Delete Account</h2>
+                                <button class="modal-close" id="modal-close-btn">×</button>
+                        </div>
+                        <div class="modal-step" id="delete-step-1">
+                                <h3>Are you sure?</h3>
+                                <p>This will permanently delete your account and all associated data. This action cannot
+                                        be reversed.</p>
+                                <div class="timer-display" id="timer-display">Please wait <span
+                                                id="timer-countdown">5</span> seconds...</div>
+                                <button class="danger-btn" disabled="" id="confirm-step-1-btn">Continue</button>
+                        </div>
+                        <div class="modal-step" id="delete-step-2" style="display: none;">
+                                <h3>Final Confirmation</h3>
+                                <p>To confirm, please type <strong>"yes, i know what i am doing"</strong> in the box
+                                        below:</p>
+                                <input class="confirmation-input" id="delete-confirmation-input"
+                                        placeholder="Type the confirmation phrase..." type="text" />
+                                <div class="modal-actions">
+                                        <button class="secondary-btn" id="cancel-delete-btn">Cancel</button>
+                                        <button class="danger-btn" disabled="" id="final-delete-btn">Delete My
+                                                Account</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="modal-overlay" id="change-password-modal" style="display: none;">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h2>Change Password</h2>
+                                <button class="modal-close" id="change-pwd-modal-close-btn">×</button>
+                        </div>
+                        <div class="modal-step" id="change-pwd-step">
+                                <p style="margin-bottom: 1rem;">Update your account password. You will be asked to log in again after.</p>
+                                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem;">
+                                        <input class="confirmation-input" id="current-password-input" placeholder="Current Password" type="password" />
+                                        <input class="confirmation-input" id="new-password-input" placeholder="New Password" type="password" />
+                                        <input class="confirmation-input" id="confirm-new-password-input" placeholder="Confirm New Password" type="password" />
+                                </div>
+                                <div class="modal-actions">
+                                        <button class="secondary-btn" id="cancel-change-pwd-btn">Cancel</button>
+                                        <button class="add-btn" id="submit-change-pwd-btn">Update Password</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <footer>
+                <a href="/terms">Terms of Use</a> |
+                <a href="/privacy">Privacy Policy</a>
+        </footer>
+        <script src="/assets/js/ui.js"></script>
+        <script src="/assets/js/dashboard.js" type="module"></script>
+</body>
+
+</html>

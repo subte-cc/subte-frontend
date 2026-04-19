@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title><!-- TITLE --> - subte.cc</title>
+    <link href="/assets/css/styles.css" rel="stylesheet" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content="<!-- DESCRIPTION -->" name="description" />
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/"><img class="logo" src="/assets/img/branding.svg" /></a>
+            <button class="mobile-menu-btn" onclick="document.querySelector('header').classList.toggle('nav-open')">
+                <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+                    <line x1="3" x2="21" y1="12" y2="12"></line>
+                    <line x1="3" x2="21" y1="6" y2="6"></line>
+                    <line x1="3" x2="21" y1="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="/docs"><button>Docs</button></a>
+                <a href="/news"><button>News</button></a>
+                <a href="/about"><button>About</button></a>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="/dashboard"><button class="btn-dash">Dashboard</button></a>
+        </div>
+    </header>
+    <main class="legal-content">
+        <div class="article-top">
+            <h1 class="article-title-main"><!-- TITLE --></h1>
+            <p class="article-description-lead"><em><!-- DESCRIPTION --></em></p>
+            <p class="article-date-lead"><em>Published on <!-- DATE --></em></p>
+        </div>
+
+        <div class="article-content">
+            <!-- ARTICLE_CONTENT -->
+        </div>
+
+        <div class="article-author-bottom">
+            By <!-- AUTHOR -->
+        </div>
+
+        <div class="article-footer">
+            <a href="/news" class="btn-back">Back to News</a>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/terms">Terms of Use</a>
+                <span class="footer-separator">|</span>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a aria-label="GitHub" class="footer-social-icon" href="https://github.com/subte-cc"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/github.svg'); -webkit-mask-image: url('/assets/img/icons/github.svg');"></span>
+                </a>
+                <a aria-label="Mastodon" class="footer-social-icon" href="https://mastodon.social/@subtecc"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/mastodon.svg'); -webkit-mask-image: url('/assets/img/icons/mastodon.svg');"></span>
+                </a>
+                <a aria-label="X" class="footer-social-icon" href="https://x.com/subte_cc" rel="noopener noreferrer"
+                    target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/x.svg'); -webkit-mask-image: url('/assets/img/icons/x.svg');"></span>
+                </a>
+                <a aria-label="Bluesky" class="footer-social-icon" href="https://bsky.app/profile/subtecc.bsky.social"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/bluesky.svg'); -webkit-mask-image: url('/assets/img/icons/bluesky.svg');"></span>
+                </a>
+                <a aria-label="RSS" class="footer-social-icon" href="/rss.xml" rel="noopener noreferrer"
+                    target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/rss.svg'); -webkit-mask-image: url('/assets/img/icons/rss.svg');"></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

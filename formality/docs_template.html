@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documentation - subte.cc</title>
+    <link href="/assets/css/styles.css" rel="stylesheet" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content="subte.cc documentation — setup guides, API reference, and code examples." name="description" />
+    <meta content="subte.cc, docs, documentation, dynamic dns, api" name="keywords" />
+    <meta content="subte.cc" name="author" />
+    <meta content="Documentation - subte.cc" property="og:title" />
+    <meta content="subte.cc documentation — setup guides, API reference, and code examples."
+        property="og:description" />
+    <meta content="website" property="og:type" />
+    <style>
+        .docs-layout {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 clamp(1rem, 5vw, 2rem);
+            gap: clamp(1.5rem, 4vw, 3rem);
+            box-sizing: border-box;
+        }
+
+        /* ── Sidebar ── */
+        .docs-sidebar {
+            width: 220px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 4.5rem;
+        }
+
+        .docs-sidebar-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 0 0 0.75rem;
+            padding: 0 0.5rem;
+        }
+
+        .docs-nav-category {
+            margin-bottom: 1.25rem;
+        }
+
+        .docs-nav-category-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 0.2rem 0.5rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.35rem;
+            
+        }
+
+        .docs-nav-sub {
+            padding-left: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .docs-nav-sub-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding: 0.25rem 0.5rem;
+            display: block;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .docs-nav-link {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            padding: 0.3rem 1rem;
+            border-radius: 0.2rem;
+            text-decoration: none;
+            transition: color 0.15s, background-color 0.15s;
+            border-left: 2px solid transparent;
+        }
+
+        .docs-nav-link:hover {
+            color: var(--text-main);
+            background-color: var(--bg-card);
+        }
+
+        .docs-nav-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background-color: var(--bg-card);
+        }
+
+        /* ── Content ── */
+        .docs-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .docs-article {
+            display: none;
+        }
+
+        .docs-article.visible {
+            display: block;
+        }
+
+        .docs-article-inner {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 0.375rem;
+            padding: clamp(1rem, 4vw, 2.5rem);
+            line-height: 1.8;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .docs-article-inner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.25rem;
+        }
+
+        .docs-article-inner h1 {
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .docs-article-inner h2 {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 600;
+            color: var(--text-main);
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .docs-article-inner h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .docs-article-inner p {
+            color: #b8b8b8;
+            margin-bottom: 1rem;
+        }
+
+        .docs-article-inner em {
+            color: var(--text-muted);
+        }
+
+        .docs-article-inner strong {
+            color: var(--text-main);
+        }
+
+        .docs-article-inner a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(77, 166, 255, 0.3);
+            text-underline-offset: 0.15em;
+        }
+
+        .docs-article-inner a:hover {
+            color: var(--accent-hover);
+        }
+
+        .docs-article-inner ul,
+        .docs-article-inner ol {
+            color: #b8b8b8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .docs-article-inner li {
+            margin-bottom: 0.4rem;
+            line-height: 1.7;
+        }
+
+        .docs-article-inner pre {
+            background-color: var(--bg-header);
+            border: 1px solid var(--border);
+            border-radius: 0.25rem;
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .docs-article-inner pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        .docs-article-inner code {
+            background-color: var(--bg-button);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.2rem;
+            font-family: monospace;
+            font-size: 0.875em;
+            color: var(--text-secondary);
+        }
+
+        .docs-mobile-nav {
+            display: none;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .docs-mobile-select {
+            display: block;
+            width: 100%;
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.2s;
+        }
+
+        .docs-mobile-select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .docs-mobile-nav::after {
+            content: "";
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0.8rem;
+            height: 0.8rem;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23a8a8a8" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .docs-layout {
+                flex-direction: column;
+                padding: 0 1rem;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .docs-sidebar {
+                display: none;
+            }
+
+            .docs-mobile-nav {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/"><img class="logo" src="/assets/img/branding.svg" /></a>
+            <button class="mobile-menu-btn" onclick="document.querySelector('header').classList.toggle('nav-open')">
+                <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+                    <line x1="3" x2="21" y1="12" y2="12"></line>
+                    <line x1="3" x2="21" y1="6" y2="6"></line>
+                    <line x1="3" x2="21" y1="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="/docs"><button>Docs</button></a>
+                <a href="/news"><button>News</button></a>
+                <a href="/about"><button>About</button></a>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="/dashboard"><button class="btn-dash">Dashboard</button></a>
+        </div>
+    </header>
+
+    <div class="docs-layout">
+        <!-- DOCS_SIDEBAR -->
+
+        <div class="docs-content">
+            <div class="docs-mobile-nav">
+                <!-- DOCS_MOBILE_SELECT -->
+            </div>
+
+            <!-- DOCS_ARTICLES -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/terms">Terms of Use</a>
+                <span class="footer-separator">|</span>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showDoc(id) {
+            document.querySelectorAll('.docs-article').forEach(function (el) {
+                el.classList.remove('visible');
+            });
+            document.querySelectorAll('.docs-nav-link').forEach(function (el) {
+                el.classList.remove('active');
+            });
+            var article = document.getElementById(id);
+            if (article) article.classList.add('visible');
+            document.querySelectorAll('.docs-nav-link[data-doc="' + id + '"]').forEach(function (el) {
+                el.classList.add('active');
+            });
+
+            var mobileSelect = document.querySelector('.docs-mobile-select');
+            if (mobileSelect) mobileSelect.value = id;
+
+            if (history.replaceState) {
+                history.replaceState(null, '', '#' + id);
+            }
+        }
+
+        (function () {
+            var hash = window.location.hash.replace('#', '');
+            var first = document.querySelector('.docs-article');
+            var target = hash ? document.getElementById(hash) : null;
+            if (target) {
+                showDoc(hash);
+            } else if (first) {
+                showDoc(first.id);
+            }
+        })();
+    </script>
+</body>
+
+</html>

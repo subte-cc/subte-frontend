@@ -1,0 +1,153 @@
+.ui-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.ui-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ui-modal {
+    background-color: #161616;
+    border: 1px solid #3a3a3a;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.ui-modal-overlay.active .ui-modal {
+    transform: translateY(0);
+}
+
+.ui-modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #f5f5f5;
+}
+
+.ui-modal-body {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.ui-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.ui-modal-btn {
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #3a3a3a;
+}
+
+.ui-modal-btn-confirm {
+    background-color: #4da6ff;
+    color: #121212;
+    border-color: #4da6ff;
+}
+
+.ui-modal-btn-confirm:hover {
+    background-color: #7ab8ff;
+    border-color: #7ab8ff;
+}
+
+.ui-modal-btn-cancel {
+    background-color: transparent;
+    color: #d0d0d0;
+}
+
+.ui-modal-btn-cancel:hover {
+    border-color: #a8a8a8;
+}
+
+.ui-toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 10000;
+}
+
+.ui-toast {
+    background-color: #161616;
+    border-left: 4px solid #4da6ff;
+    color: #f5f5f5;
+    padding: 1rem 1.5rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    min-width: 250px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    animation: toast-in 0.3s ease forwards;
+    border-top: 1px solid #3a3a3a;
+    border-right: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.ui-toast.error {
+    border-left-color: #ff5252;
+}
+
+.ui-toast.success {
+    border-left-color: #4CAF50;
+}
+
+.ui-toast.fade-out {
+    animation: toast-out 0.3s ease forwards;
+}
+
+@keyframes toast-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toast-out {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

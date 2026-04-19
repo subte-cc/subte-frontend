@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="./favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <title>subte.cc - Dynamic DNS for everyone</title>
+    <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." name="description" />
+    <meta content="subte.cc, dynamic dns, ddns, free dns, open source, privacy" name="keywords" />
+    <meta content="subte.cc" name="author" />
+    <meta content="subte.cc" property="og:title" />
+    <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." property="og:description" />
+    <meta content="website" property="og:type" />
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/"><img class="logo" src="./assets/img/branding.svg" /></a>
+            <button class="mobile-menu-btn" onclick="document.querySelector('header').classList.toggle('nav-open')">
+                <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+                    <line x1="3" x2="21" y1="12" y2="12"></line>
+                    <line x1="3" x2="21" y1="6" y2="6"></line>
+                    <line x1="3" x2="21" y1="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="nav-links" id="nav-links"><a href="/docs"><button>Docs</button></a>
+                <a href="/news"><button>News</button></a>
+                <a href="/about"><button>About</button></a>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="/dashboard"><button class="btn-dash">Dashboard</button></a>
+        </div>
+    </header>
+    <main class="landing-main">
+        <div class="landing-hero">
+            <div class="landing-hero-content">
+                <img alt="subte.cc logo" class="landing-logo" src="./assets/img/logo.svg" />
+                <h1 class="landing-tagline">Dynamic DNS for everyone, <br />free as in freedom and beer.</h1>
+            </div>
+        </div>
+        <section class="landing-nonprofit">
+            <div class="nonprofit-badge">
+                <svg class="nonprofit-icon" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                    </path>
+                </svg>
+                <h2>Non-Profit Project</h2>
+            </div>
+            <p class="nonprofit-description">
+                subte.cc is sustained entirely by community donations.
+                We believe in providing free, open, and accessible DynDNS for everyone.
+            </p>
+            <p class="nonprofit-cta">
+                If you find our service useful, consider supporting us to keep the project running.
+            </p>
+            <a class="btn-donate" href="/donate">Support with a Donation</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/terms">Terms of Use</a>
+                <span class="footer-separator">|</span>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a aria-label="GitHub" class="footer-social-icon" href="https://github.com/subte-cc"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/github.svg'); -webkit-mask-image: url('/assets/img/icons/github.svg');"></span>
+                </a>
+                <a aria-label="Mastodon" class="footer-social-icon" href="https://mastodon.social/@subtecc"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/mastodon.svg'); -webkit-mask-image: url('/assets/img/icons/mastodon.svg');"></span>
+                </a>
+                <a aria-label="X" class="footer-social-icon" href="https://x.com/subte_cc" rel="noopener noreferrer"
+                    target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/x.svg'); -webkit-mask-image: url('/assets/img/icons/x.svg');"></span>
+                </a>
+                <a aria-label="Bluesky" class="footer-social-icon" href="https://bsky.app/profile/subtecc.bsky.social"
+                    rel="noopener noreferrer" target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/bluesky.svg'); -webkit-mask-image: url('/assets/img/icons/bluesky.svg');"></span>
+                </a>
+                <a aria-label="RSS" class="footer-social-icon" href="/rss.xml" rel="noopener noreferrer"
+                    target="_blank">
+                    <span class="social-icon"
+                        style="mask-image: url('/assets/img/icons/rss.svg'); -webkit-mask-image: url('/assets/img/icons/rss.svg');"></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

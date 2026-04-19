@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="/assets/css/styles.css" rel="stylesheet" />
+    <link href="/assets/css/ui.css" rel="stylesheet" />
+    <title>subte.cc - Login / Register</title>
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." name="description" />
+    <meta content="subte.cc, dynamic dns, ddns, free dns, open source, privacy" name="keywords" />
+    <meta content="subte.cc" name="author" />
+    <meta content="subte.cc" property="og:title" />
+    <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." property="og:description" />
+    <meta content="website" property="og:type" />
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a class="logo" href="/">subte.cc</a>
+            <a href="/docs"><button class="btn-spec">Docs</button></a>
+        </div>
+        <div class="header-right">
+        </div>
+    </header>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-tabs">
+                <button class="tab-active" id="login-tab">Login</button>
+                <button class="tab-inactive" id="signup-tab">Sign Up</button>
+            </div>
+            <form class="space-y-4" id="auth-form">
+                <div class="auth-form-group">
+                    <label>Email Address</label>
+                    <input name="email" placeholder="you@example.com" required="" type="email" />
+                </div>
+                <div class="auth-form-group">
+                    <label>Password</label>
+                    <input id="password-input" name="password" placeholder="••••••••" required="" type="password" />
+                </div>
+                <div class="auth-form-group" id="confirm-password-gp" style="display: none;">
+                    <label>Confirm Password</label>
+                    <input id="confirm-password-input" placeholder="••••••••" type="password" />
+                </div>
+                <div class="auth-form-group" id="invite-code-gp" style="display: none;">
+                    <label>Invite Code</label>
+                    <input id="invite-code-input" name="invite_code" placeholder="GNU-ROCKS.." type="text" />
+                </div>
+                <div id="terms-gp"
+                    style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--text-muted); display: none;">
+                    <input id="terms-checkbox" name="checkbox" type="checkbox" value="1" /> I agree to the <a
+                        href="/terms" target="_blank">Terms</a> and <a href="/privacy" target="_blank">Privacy
+                        Policy</a>
+                </div>
+                <button class="btn-primary" id="submit-btn" type="submit">
+                    Login
+                </button>
+            </form>
+            <div class="auth-footer" id="signup-prompt">
+                Don't have an account? <button id="signup-switch">Sign Up</button>
+            </div>
+        </div>
+        <div class="auth-card" id="oauth-container" style="max-width: 290px; display: none;">
+            <h2 style="margin-top: 0px;">Or continue with</h2>
+            <img class="oauth-button" id="oauth-codeberg" src="assets/img/codeberg.svg" />
+            <img class="oauth-button" id="oauth-github" src="assets/img/github.svg" />
+            <img class="oauth-button" id="oauth-google" src="assets/img/google.svg" />
+        </div>
+    </div>
+    <script src="/assets/js/ui.js"></script>
+    <script src="/assets/js/login.js" type="module"></script>
+    <script>
+        document.getElementById('signup-switch')?.addEventListener('click', () => {
+            document.getElementById('signup-tab').click();
+        });
+    </script>
+</body>
+
+</html>
