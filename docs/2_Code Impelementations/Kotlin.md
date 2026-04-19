@@ -1,7 +1,7 @@
 # Kotlin Implementation
 *Last Update: 18/04/2026*
 
-```bash
+```kotlin
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL

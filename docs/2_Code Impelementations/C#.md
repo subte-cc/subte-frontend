@@ -3,7 +3,7 @@
 
 *Uses System.Net.Http library from .NET Framework 4.5 onwards*
 
-```bash
+```C#
 
 static HttpClient client = new HttpClient(); // Creates a new HttpClient object
 
