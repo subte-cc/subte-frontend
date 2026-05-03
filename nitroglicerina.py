@@ -312,7 +312,7 @@ def build_news(news_items, list_template_path, article_template_path, build_dir)
 
     final_list_page = list_template.replace('<!-- NEWS_LIST_CONTENT -->', list_html)
     
-    list_output_path = os.path.join(build_dir, 'news.html')
+    list_output_path = os.path.join(build_dir, 'news/index.html')
     with open(list_output_path, 'w', encoding='utf-8') as f:
         f.write(final_list_page)
     print(f"Generated News List: {list_output_path}")
