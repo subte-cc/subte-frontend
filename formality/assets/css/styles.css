@@ -52,6 +52,9 @@ a:active {
     text-decoration: none;
 }
 
+
+/* legacy support */
+
 /* latin-ext */
 @font-face {
     font-family: 'Lexend';
@@ -71,6 +74,40 @@ a:active {
     src: url('../fonts/lexend.ttf') format('truetype');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/* regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/lexend-v26-latin-regular.woff2') format('woff2');
+}
+/* 500 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/lexend-v26-latin-500.woff2') format('woff2');
+}
+/* 600 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/lexend-v26-latin-600.woff2') format('woff2');
+}
+/* 700 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/lexend-v26-latin-700.woff2') format('woff2');
+}
+
 
 button {
     background-color: transparent;
