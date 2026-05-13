@@ -15,6 +15,7 @@ curl -H "X-Api-Key: YOURTOKENHERE" https://subte.cc/up?domains=DOMAIN1,DOMAIN2&i
 ```
 If no IP is specified in the request, the IP from where the request is made will be used.
 
+*Only use subdomain wihout .subte.cc*
 
 ## Automatic updates using cron
 
@@ -48,5 +49,3 @@ Update frequency can be adjusted by changing the 5 parameters, ordered by
 |
 Min(0-59)
 ```
-
-Return to [Home](index.md)
