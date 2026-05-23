@@ -129,7 +129,7 @@ def generate_rss(news_items, build_dir):
   <title>subte.cc News</title>
   <link>{base_url}</link>
   <description>Latest news and announcements from subte.cc</description>
-  <language>es</language>
+  <language>en</language>
   <lastBuildDate>{email.utils.formatdate(time.time())}</lastBuildDate>
   <atom:link href="{base_url}/rss.xml" rel="self" type="application/rss+xml" />
   {rss_items}
