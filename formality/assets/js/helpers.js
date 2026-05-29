@@ -12,12 +12,9 @@ async function checkAuth() {
             navDashboard.style.display = 'block';
             navLogin.style.display = 'none';
 
-            navDashboard.href = '/dashboard';
         } else {
             navDashboard.style.display = 'none';
             navLogin.style.display = 'block';
-
-            navLogin.href = '/login';
         }
 
     } catch (error) {
@@ -25,8 +22,6 @@ async function checkAuth() {
 
         navDashboard.style.display = 'none';
         navLogin.style.display = 'block';
-
-        navLogin.href = '/login';
     }
 }
 
