@@ -830,3 +830,36 @@ table {
 .surprise-trigger:hover {
     transform: rotate(360deg);
 }
+
+altcha-widget,
+altcha-widget *,
+altcha-widget::part(base) {
+  --altcha-border-color: #3a3a3a !important;
+  --altcha-border-width: 1px !important;
+  --altcha-border-radius: 0.25rem !important;
+
+  --altcha-color-base: #161616 !important;
+  --altcha-color-base-content: #f5f5f5 !important;
+
+  --altcha-color-primary: #4da6ff !important;
+  --altcha-color-primary-content: #121212 !important;
+
+  --altcha-color-neutral: #1b1b1b !important;
+  --altcha-color-neutral-content: #d0d0d0 !important;
+
+  --altcha-color-error: #ff5252 !important;
+  --altcha-color-success: #4caf50 !important;
+
+  --altcha-checkbox-border-color: #3a3a3a !important;
+  --altcha-checkbox-border-radius: 0.25rem !important;
+  --altcha-input-background-color: #1b1b1b !important;
+  --altcha-input-color: #f5f5f5 !important;
+  
+  --altcha-padding: 0.75rem !important;
+  --altcha-max-width: 400px !important;
+  
+  --altcha-transition-duration: 0.2s !important;
+  --altcha-shadow: none !important;
+  
+  font-family: "Lexend", Arial, sans-serif !important;
+}
