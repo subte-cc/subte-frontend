@@ -135,3 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 });
+
+const altchaWidget = document.querySelector('altcha-widget');
+if (altchaWidget) {
+    altchaWidget.addEventListener('statechange', (ev) => {
+        submitBtn.disabled = ev.detail.state !== 'verified';
+    });
+}

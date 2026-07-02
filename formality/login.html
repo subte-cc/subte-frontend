@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="/assets/css/styles.css" rel="stylesheet" />
     <link href="/assets/css/ui.css" rel="stylesheet" />
+    <script async defer src="/assets/js/altcha.min.js" type="module"></script>
     <title>subte.cc - Login / Register</title>
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
     <meta content="subte.cc - Dynamic DNS for everyone. Free as in freedom and beer." name="description" />
@@ -73,7 +74,8 @@
                         href="/terms" target="_blank">Terms</a> and <a href="/privacy" target="_blank">Privacy
                         Policy</a>
                 </div>
-                <button class="btn-primary" id="submit-btn" type="submit">
+                <altcha-widget challenge="/api/auth/challenge" name="altcha" class="altcha-widget"></altcha-widget>
+                <button class="btn-primary" id="submit-btn" type="submit" disabled>
                     Login
                 </button>
             </form>
