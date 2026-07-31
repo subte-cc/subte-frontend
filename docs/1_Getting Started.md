@@ -1,9 +1,9 @@
 # Getting Started
-*Last Update: 16/04/2026*
+*Last Update: 30/7/2026*
 
 
 
-*note: this documentation is currently under construction and is possible that is going to change soon*
+*note: this documentation is currently under construction and is subject to change*
 
 
 Welcome to the subte.cc documentation!
@@ -19,7 +19,7 @@ Once you have created an account, you will be met with the subte.cc dashboard, w
 
 ### Windows
 
-If you are using a Windows machine, you can either use the [client](#setting-up__windows__client) or the [Task Scheduler](#setting-up__windows__task-scheduler) method
+If you are using a Windows machine, you can either use the [client](#setting-up__windows__client) or the [Task Scheduler](#setting-up__windows__task-scheduler) method.
 
 ### Linux/Unix-Like
 
@@ -33,7 +33,8 @@ If you are using an Android device, refer to the Android [app](#setting-up__mobi
 
 ## Adding subte.cc to your program
 
-If you want to add subte.cc support to your preexisting program or system, a handful of examples are provided for different languages:
+If you want to add subte.cc support to your preexisting program or system, refer to the examples offered for the following languages:
 
 - [C#](#code-impelementations__c)
 - [Kotlin](#code-impelementations__kotlin)
+- [Python](#code-impelementations__python)
