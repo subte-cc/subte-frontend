@@ -193,7 +193,10 @@
     float: right;
     transition: all 0.2s;
 }
-.delete-btn:hover { background-color: #e74c3c; color: var(--bg-main, #121212); }
+.delete-btn:hover { 
+    background-color: #e74c3c; color: var(--bg-main, #121212); 
+    border: 1px solid #e74c3c;
+}
 
 #logout-btn {
     background-color: transparent;
