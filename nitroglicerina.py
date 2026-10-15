@@ -6,10 +6,58 @@ import sys
 import datetime
 import email.utils
 import time
+import subprocess
+import re
 import mistune
 import htmlmin
 import rcssmin
 import rjsmin
+
+
+def get_git_commit_info():
+    fallback = ("abc1234", "https://example.com/repo/commit/abc1234")
+    try:
+        short_hash = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL,
+        ).decode("utf-8").strip()
+
+        origin = subprocess.check_output(
+            ["git", "remote", "get-url", "origin"],
+            stderr=subprocess.DEVNULL,
+        ).decode("utf-8").strip()
+    except Exception as e:
+        print(f"Warning: could not read git info ({e}); using placeholder.")
+        return fallback
+
+    repo_url = origin
+    if repo_url.startswith("git@"):
+        host_path = repo_url[len("git@"):]
+        host, _, path = host_path.partition(":")
+        repo_url = f"https://{host}/{path}"
+    elif repo_url.startswith("ssh://git@"):
+        repo_url = "https://" + repo_url[len("ssh://git@"):]
+
+    if repo_url.endswith(".git"):
+        repo_url = repo_url[:-4]
+
+    commit_url = f"{repo_url}/commit/{short_hash}"
+    return short_hash, commit_url
+
+
+def replace_commit_tag(filepath, short_hash, commit_url):
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    if "<!-- COMMIT -->" not in content:
+        return
+
+    link = f'<a href="{commit_url}">{short_hash}</a>'
+    content = content.replace("<!-- COMMIT -->", link)
+
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"Injected commit link: {filepath}")
 
 
 def minify_file(filepath):
@@ -66,7 +114,7 @@ def parse_article(filepath):
 
     content_lines = []
     header_count = 0
-    
+
     for line in lines:
         if header_count < 4:
             if line.startswith('_title='):
@@ -91,12 +139,12 @@ def parse_article(filepath):
                     metadata['date_obj'] = datetime.datetime.min
                 header_count += 1
                 continue
-        
+
         content_lines.append(line)
 
     markdown_content = "".join(content_lines)
     metadata['html_content'] = mistune.html(markdown_content)
-    
+
     if metadata['date_obj']:
         metadata['date_display'] = metadata['date_obj'].strftime('%d/%m/%Y')
     else:
@@ -105,11 +153,10 @@ def parse_article(filepath):
     return metadata
 
 
-
 def generate_rss(news_items, build_dir):
     base_url = "https://subte.cc"
     rss_items = ""
-    
+
     for item in news_items:
         # RSS requires RFC 822 format for dates
         pub_date = email.utils.formatdate(time.mktime(item['date_obj'].timetuple()))
@@ -143,15 +190,12 @@ def generate_rss(news_items, build_dir):
 
 
 def slugify(text):
-    import re
     text = text.replace(' ', '-')
     text = re.sub(r'[^A-Za-z0-9_-]', '', text)
     return text.lower()
 
 
 def build_docs(docs_src_dir, template_path, build_dir):
-    import re
-
     if not os.path.isdir(docs_src_dir):
         print("No docs directory found, skipping docs build.")
         return
@@ -162,7 +206,6 @@ def build_docs(docs_src_dir, template_path, build_dir):
     entries = []
 
     def clean_name(name):
-        import re
         return re.sub(r'^\d+[\-_.]\s*', '', name)
 
     def human(name):
@@ -290,7 +333,7 @@ def build_news(news_items, list_template_path, article_template_path, build_dir)
         page_html = page_html.replace('<!-- AUTHOR -->', item['author'])
         page_html = page_html.replace('<!-- DATE -->', item['date_display'])
         page_html = page_html.replace('<!-- ARTICLE_CONTENT -->', item['html_content'])
-        
+
         output_path = os.path.join(news_dir, f"{item['slug']}.html")
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(page_html)
@@ -311,7 +354,7 @@ def build_news(news_items, list_template_path, article_template_path, build_dir)
         list_html += card_html
 
     final_list_page = list_template.replace('<!-- NEWS_LIST_CONTENT -->', list_html)
-    
+
     list_output_path = os.path.join(build_dir, 'news/index.html')
     with open(list_output_path, 'w', encoding='utf-8') as f:
         f.write(final_list_page)
@@ -377,6 +420,14 @@ def main():
         build_news(news_items, list_template, article_template, build_dir)
     else:
         print("No news articles found.")
+
+    print("Injecting commit tags...")
+    short_hash, commit_url = get_git_commit_info()
+    print(f"Commit: {short_hash} to {commit_url}")
+    for root, dirs, files in os.walk(build_dir):
+        for file in files:
+            if file.endswith('.html'):
+                replace_commit_tag(os.path.join(root, file), short_hash, commit_url)
 
     print("Minifying production files...")
     for root, dirs, files in os.walk(build_dir):
