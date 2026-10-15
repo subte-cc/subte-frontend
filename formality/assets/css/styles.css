@@ -32,7 +32,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 0rem;
     background-color: var(--bg-header);
     border-bottom: 1px solid var(--border);
     position: sticky;
@@ -40,6 +39,47 @@ header {
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     min-width: 100%;
+}
+
+header .header-left {
+  align-self: stretch;
+}
+
+header .nav-links {
+  align-items: stretch;
+  align-self: stretch;
+  gap: 0.25rem;
+}
+
+header .nav-links a {
+  display: flex;
+  align-items: stretch;
+}
+
+header .nav-links button {
+  height: 100%;
+  padding: 1rem 1rem;
+  border: 0;
+  border-bottom: var(--bar, 4px) solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: color .15s, border-color .15s, background-color .15s;
+}
+
+header .nav-links button:hover,
+header .nav-links button:focus-visible {
+  background: transparent;
+  color: var(--text-main);
+  border-bottom-color: var(--accent);
+}
+
+header .nav-links button:active {
+  background: var(--bg-button);
+  border-bottom-color: var(--accent);
+  color: var(--text-main);
+  transform: none;
 }
 
 h1,
@@ -1073,7 +1113,8 @@ table {
     header {
         flex-wrap: wrap;
     }
-
+    header .nav-links { align-self: auto; }
+    header .nav-links button { height: auto; }
     .header-left {
         width: 100%;
         justify-content: space-between;
