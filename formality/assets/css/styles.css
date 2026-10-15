@@ -606,7 +606,6 @@ table {
 .btn-donate:hover {
     outline: 4px solid #2c5c8d;
     transform: translateY(-0.250rem);
-    transform: rotate(55);
 }
 
 .news-list {
