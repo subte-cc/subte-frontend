@@ -607,6 +607,7 @@ table {
 .btn-donate:hover {
     color: var(--bg-main);
     outline: 4px solid #2c5c8d;
+    transform: translateY(-0.250rem);
 }
 .btn-donate:visited, .btn-donate:active, .btn-donate:link  {
     color: var(--bg-main);
