@@ -6,7 +6,7 @@
   var s = canvas.style;
   s.position = 'fixed';
   s.left = '0';
-  s.bottom = '-50px';
+  s.bottom = '-1rem';
   s.display = 'block';
   s.zIndex = '-1';
   s.pointerEvents = 'none';
