@@ -6,7 +6,7 @@
   var s = canvas.style;
   s.position = 'fixed';
   s.left = '0';
-  s.bottom = '0';
+  s.bottom = '-50px';
   s.display = 'block';
   s.zIndex = '-1';
   s.pointerEvents = 'none';
@@ -59,7 +59,7 @@
 
     canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
-    document.body.style.paddingBottom = h + 'px';
+    canvas.style.opacity = 0.5;
 
     var dpr = window.devicePixelRatio || 1;
     canvas.width = Math.round(w * dpr);
