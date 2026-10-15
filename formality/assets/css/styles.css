@@ -48,7 +48,6 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-    color: var(--text-main);
     text-decoration: none;
 }
 
@@ -598,15 +597,16 @@ table {
     color: var(--bg-main);
     font-weight: 600;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
+    outline: 3px solid #161616;
     border-radius: 0.25rem;
     text-decoration: none;
     transition: all 0.2s;
-    border: none;
 }
 
 .btn-donate:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-0.125rem);
+    outline: 4px solid #2c5c8d;
+    transform: translateY(-0.250rem);
+    transform: rotate(55);
 }
 
 .news-list {
